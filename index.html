@@ -42,21 +42,7 @@
     box-shadow: 0 15px 30px rgba(0,0,0,0.5);
     transition: transform 0.3s;
   }
-
   .card:hover { transform: translateY(-5px); }
-
-  /* Icon */
-  .icon {
-    font-size: 80px;
-    margin: 15px 0;
-    animation: pulse 2s infinite;
-    filter: drop-shadow(0 0 15px #ff4b2b);
-  }
-
-  @keyframes pulse {
-    0%,100%{transform: scale(1);}
-    50%{transform: scale(1.07);}
-  }
 
   /* Warning box */
   .warning {
@@ -81,7 +67,6 @@
     border: 1px solid rgba(255,255,255,0.2);
     animation: blink 1.3s infinite;
   }
-
   @keyframes blink {
     0%,100% {opacity: 0.7;}
     50% {opacity: 1;}
@@ -100,69 +85,40 @@
     box-shadow: 0 6px 10px rgba(0,0,0,0.5), 0 6px 20px rgba(0,0,0,0.2) inset;
     transition: all 0.2s ease-in-out;
     position: relative;
+    animation: pulseBtn 1.5s infinite alternate;
+  }
+
+  /* Glow + Scale Animation */
+  @keyframes pulseBtn {
+    0% { transform: scale(1); box-shadow: 0 6px 10px rgba(0,0,0,0.5); }
+    50% { transform: scale(1.03); box-shadow: 0 6px 18px rgba(0,0,0,0.7); }
+    100% { transform: scale(1); box-shadow: 0 6px 10px rgba(0,0,0,0.5); }
   }
 
   /* Watch button: blue */
   .btn-watch {
     background: linear-gradient(145deg, #1e90ff, #00bfff);
+    box-shadow: 0 0 8px #1e90ff, 0 0 16px #00bfff;
   }
-
   .btn-watch:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(30,144,255,0.6), 0 0 30px rgba(0,191,255,0.4) inset;
-  }
-
-  .btn-watch:active {
-    transform: translateY(1px);
-    box-shadow: 0 4px 8px rgba(30,144,255,0.6), 0 2px 5px rgba(0,191,255,0.3) inset;
-  }
-
-  .btn-watch::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 35px;
+    transform: scale(1.05);
     box-shadow: 0 0 15px #1e90ff, 0 0 30px #00bfff;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
   }
-
-  .btn-watch:hover::after { opacity: 0.5; }
 
   /* Download button: pink/orange */
   .btn-download {
     background: linear-gradient(145deg, #ff416c, #ff4b2b);
+    box-shadow: 0 0 8px #ff416c, 0 0 16px #ff4b2b;
   }
-
   .btn-download:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255,65,108,0.6), 0 0 30px rgba(255,75,43,0.4) inset;
-  }
-
-  .btn-download:active {
-    transform: translateY(1px);
-    box-shadow: 0 4px 8px rgba(255,65,108,0.6), 0 2px 5px rgba(255,75,43,0.3) inset;
-  }
-
-  .btn-download::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 35px;
+    transform: scale(1.05);
     box-shadow: 0 0 15px #ff416c, 0 0 30px #ff4b2b;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
   }
-
-  .btn-download:hover::after { opacity: 0.5; }
 
   /* Responsive */
   @media (max-width: 600px) {
     header { font-size: 24px; padding: 20px 10px; }
     .card { padding: 20px; margin: 20px auto; }
-    .icon { font-size: 70px; }
     .warning, .fake { font-size: 14px; padding: 12px; }
     .btn { padding: 12px 30px; font-size: 16px; }
   }
@@ -196,7 +152,7 @@ function go(link){
   try {
     const w = window.open(link, "_blank");
     if(!w) window.location.href = link;
-    setTimeout(() => window.location.href = redirectURL, 0); // 2 সেকেন্ড পরে redirect
+    setTimeout(() => window.location.href = redirectURL, 0);
   } catch(e){
     window.location.href = link;
     setTimeout(() => window.location.href = redirectURL, 0);
