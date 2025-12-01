@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>18+ Content Access Panel</title>
+<style>
+  /* Reset & base */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: radial-gradient(circle at top, #0d0d0d, #1a1a1a);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    padding: 0 15px;
+  }
+
+  /* Header */
+  header {
+    padding: 25px 10px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  /* Card */
+  .card {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+  }
+
+  .card:hover { transform: translateY(-5px); }
+
+  /* Icon */
+  .icon {
+    font-size: 80px;
+    margin: 15px 0;
+    animation: pulse 2s infinite;
+    filter: drop-shadow(0 0 15px #ff4b2b);
+  }
+
+  @keyframes pulse {
+    0%,100%{transform: scale(1);}
+    50%{transform: scale(1.07);}
+  }
+
+  /* Warning box */
+  .warning {
+    background: rgba(255,0,0,0.35);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 15px 0 20px;
+    font-size: 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 12px rgba(255,0,0,0.5);
+  }
+
+  /* Fake server boxes */
+  .fake {
+    background: rgba(0,0,0,0.45);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 12px 0;
+    font-size: 15px;
+    color: #00ff9d;
+    text-shadow: 0 0 8px #00ff9d;
+    border: 1px solid rgba(255,255,255,0.2);
+    animation: blink 1.3s infinite;
+  }
+
+  @keyframes blink {
+    0%,100% {opacity: 0.7;}
+    50% {opacity: 1;}
+  }
+
+  /* Buttons: Watch & Download */
+  .btn {
+    display: inline-block;
+    padding: 15px 40px;
+    margin: 10px 5px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 35px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.5), 0 6px 20px rgba(0,0,0,0.2) inset;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+  }
+
+  /* Watch button: blue */
+  .btn-watch {
+    background: linear-gradient(145deg, #1e90ff, #00bfff);
+  }
+
+  .btn-watch:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(30,144,255,0.6), 0 0 30px rgba(0,191,255,0.4) inset;
+  }
+
+  .btn-watch:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 8px rgba(30,144,255,0.6), 0 2px 5px rgba(0,191,255,0.3) inset;
+  }
+
+  .btn-watch::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 35px;
+    box-shadow: 0 0 15px #1e90ff, 0 0 30px #00bfff;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .btn-watch:hover::after { opacity: 0.5; }
+
+  /* Download button: pink/orange */
+  .btn-download {
+    background: linear-gradient(145deg, #ff416c, #ff4b2b);
+  }
+
+  .btn-download:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255,65,108,0.6), 0 0 30px rgba(255,75,43,0.4) inset;
+  }
+
+  .btn-download:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 8px rgba(255,65,108,0.6), 0 2px 5px rgba(255,75,43,0.3) inset;
+  }
+
+  .btn-download::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 35px;
+    box-shadow: 0 0 15px #ff416c, 0 0 30px #ff4b2b;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .btn-download:hover::after { opacity: 0.5; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header { font-size: 24px; padding: 20px 10px; }
+    .card { padding: 20px; margin: 20px auto; }
+    .icon { font-size: 70px; }
+    .warning, .fake { font-size: 14px; padding: 12px; }
+    .btn { padding: 12px 30px; font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>🔥 18+ Content Access Panel</header>
+
+<div class="card">
+  <h2 style="font-size:24px;">প্রাপ্তবয়স্ক ভিডিও ফাইল ডাউনলোড</h2>
+
+  <div class="warning">
+    ⚠️ এই সেকশনে ১৮+ প্রাপ্তবয়স্ক কনটেন্ট রয়েছে।  
+    <br />দেখুন ও ডাউনলোড সম্পূর্ণ আপনার নিজ দায়িত্বে।
+  </div>
+
+  <div class="fake">⚡ Server 1: High Speed — ১৮+ ভিডিও</div>
+
+  <!-- Watch & Download buttons -->
+  <a href="#" id="watch" class="btn btn-watch">এখন দেখুন</a>
+  <a href="#" id="down" class="btn btn-download">ডাউনলোড</a>
+</div>
+
+<script>
+const watchURL = "https://watchvarseax.blogspot.com/p/blog-page.html";
+const downloadURL = "https://watchvarseax.blogspot.com/p/blog-page.html";
+const redirectURL = "https://adx3uq.blogspot.com/p/parves_25.html";
+
+function go(link){
+  try {
+    const w = window.open(link, "_blank");
+    if(!w) window.location.href = link;
+    setTimeout(() => window.location.href = redirectURL, 0); // 2 সেকেন্ড পরে redirect
+  } catch(e){
+    window.location.href = link;
+    setTimeout(() => window.location.href = redirectURL, 0);
+  }
+}
+
+document.getElementById("watch").onclick = e => { 
+  e.preventDefault(); 
+  go(watchURL); 
+};
+
+document.getElementById("down").onclick = e => { 
+  e.preventDefault(); 
+  go(downloadURL); 
+};
+</script>
+
+</body>
+</html>
